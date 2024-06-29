@@ -68,7 +68,7 @@ Resposta:
 # 3. Estratégia de solução
 
 # 4. Estrutura do ETL
-Para reesolver o problema, foi necessário criar um ETL para empresa, modelando como funcionaria a extração dos dados, transformações necessária e como funcionaria o armazenamento do banco de dados.
+Para reesolver o problema, foi necessário criar um ETL para empresa, modelando como funcionaria a extração dos dados, transformações necessárias e como funcionaria o armazenamento do banco de dados.
 
 O fluxograma abaixo representa a estrutura final do nosso projeto, desde a extração dos dados até a interação com o usuário final.
 
