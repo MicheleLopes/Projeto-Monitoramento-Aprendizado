@@ -108,10 +108,42 @@ O maior desafio deste projeto foi estruturar do zero como seria esse ETL da empr
 
 # 9. Próximos passos
 
-
 # Sobre o repositório
 
 # 1. Estrutura das pastas
+
+**Repositório APP** 
+
+Repositório que contém todos os arquivos necessários para a aplicação web do Streamlit
+
+| Pasta/Nome do Arquivo          | Descrição                                                      |
+|--------------------------------|----------------------------------------------------------------|
+| .streamlit/config.toml         | Arquivo de configuração do Streamlit.                          |
+| auth/auth.py                   | Módulo de autenticação do usuário.                             |
+| configs/configs.py             | Arquivo de configuração geral do projeto.                      |
+| functions/                     | Diretório contendo funções auxiliares.                         |
+| functions/bigquery_client.py   | Funções para interação com o BigQuery.                         |
+| functions/cademi_api.py        | Funções para interação com a API da Cademi.                    |
+| functions/data_processing.py   | Funções para processamento de dados.                           |
+| functions/streamlit_functions.py | Funções específicas para uso com o Streamlit.              |
+| img/                           | Diretório para armazenar imagens utilizadas no projeto.        |
+| pages/                         | Diretório contendo as páginas da aplicação Streamlit.          |
+| pages/Inserir_nova_tag.py      | Página para inserir novas tags na aplicação.                   |
+| pages/Progresso_analista.py    | Página para visualizar o progresso dos analistas.              |
+| pages/Progresso_cientista.py   | Página para visualizar o progresso dos cientistas.             |
+| .env                           | Arquivo de variáveis de ambiente.                              |
+| config.yaml                    | Arquivo de configuração em formato YAML.                       |
+| credenciais.json               | Arquivo contendo credenciais de acesso.                        |
+| Dockerfile                     | Arquivo de configuração para a criação de um container Docker. |
+| home.py                        | Script principal ou página inicial da aplicação.               |
+| requirements.txt               | Arquivo contendo as dependências do projeto.                   |
+| style.css                      | Arquivo de estilos CSS para a aplicação.  
+
+
+**Repositório ETL** 
+
+Repositório que contém todos os arquivos necessários para funcionamento da estrutura do ETL
+
 
 # 2. Documentaçao e referência para consultas
 [Documentação API Cademi](https://ajuda.cademi.com.br/configuracoes/api/usuario)
