@@ -3,7 +3,9 @@ Este foi um projeto realizado para a empresa [Comunidade DS](https://www.comunid
 Ele foi elaborado inicialmente por uma equipe de 3 cientistas de dados e em alguns momentos também houve o contato com stakeholders do projeto e o analista de dados da empresa para conseguir acesso aos dados e também conseguir executar o projeto na nuvem da empresa.
 
 O projeto possui duas entregas principais:
+
 1- Construção do ETL que faz toda extração dos dados e carga para o GCP;
+
 2- Painel para interação com o usuário na plataforma Streamlit.
 
 Como o projeto contém alguns dados sigilosos da empresa, o projeto deste portfólio utiliza uma tabela fictícia para poder disponibilizar o painel criado para visualização pública.
@@ -68,7 +70,7 @@ Resposta:
 # 3. Estratégia de solução
 
 # 4. Estrutura do ETL
-Para reesolver o problema, foi necessário criar um ETL para empresa, modelando como funcionaria a extração dos dados, transformações necessárias e como funcionaria o armazenamento do banco de dados.
+Para resolver o problema, foi necessário criar um ETL para empresa, modelando como funcionaria a extração dos dados, transformações necessárias e como funcionaria o armazenamento do banco de dados.
 
 O fluxograma abaixo representa a estrutura final do nosso projeto, desde a extração dos dados até a interação com o usuário final.
 
@@ -76,7 +78,7 @@ O fluxograma abaixo representa a estrutura final do nosso projeto, desde a extra
 
 Segue abaixo um descritivo de como funcionam as interações do ETL:
 
-1Inicialmente é feito a extração dos dados da plataforma da Cademi por meio de uma API. Para isso como entrada é necessário informar tags das turmas, onde a API irá retornar uma lista de alunos e informações de contato.
+Inicialmente é feito a extração dos dados da plataforma da Cademi por meio de uma API. Para isso como entrada é necessário informar tags das turmas, onde a API irá retornar uma lista de alunos e informações de contato.
 
 Com essa informação é realizado uma segunda solicitação via API, onde como entrada é fornecido a lista de alunos que a Cademi retornou e em conjunto uma tabela com os produtos que gostaríamos de extrair o progresso.
 Esses dados do progresso são armazenados dentro do nosso banco de dados a fim de armazenar o histórico do progresso.
@@ -87,22 +89,26 @@ Além disso o streamlit também possui uma tela onde o coordenador de ensino pod
 
 O APP do streamlit é disponível para acesso de forma web, hospedado em Cloud por meio do GCP. Como essa aplicação é de uso interno da empresa, para acesso seguro, existe uma tela de login onde os usuários precisam informar as credenciais fornecidas pela empresa.
 
-# 5. Solução final
+# 5. Estrutura do código
+
+Falar sobre a divisão modular para organização, faltar também da separação das variáveis de ambiente e credenciais
+
+# 6. Solução final
 Explicar sobre o streamlit e suas páginas
 Como produto final para empresa foi elaborado um painel na plataforma do streamlit.
 Esse painel possui inicialmente uma tela de login, que garante o acesso apenas para os colaboradores internos da empresa.
 Além disso possui uma página para Inserir novas Tags para acompanhamento da trilha
 
-# 6. Resultados obtidos
+# 7. Resultados obtidos
 Processo rodando de forma automática e independente de um profissional que entenda de código para subir eventuais atualizações
 Se a pessoa cancelar deixa de pagar o ticket médio - entender valores se possíveis 
 Tempo de cada tutor  - Pegar insights e depoimento com os tutores
 Tempo de cada funcionário  - Pegar insights e depoimento com Meigarom e Nayara
 
-# 7. Conclusões finais
+# 8. Conclusões finais
 O maior desafio deste projeto foi estruturar do zero como seria esse ETL da empresa e conseguir automatiza-lo de forma que atualizações futuras não dependam de um analista de dados, conseguem ser feitas por um usuário da área de negócio apenas por meio de uma interação com a interface
 
-# 8. Próximos passos
+# 9. Próximos passos
 
 
 # Sobre o repositório
