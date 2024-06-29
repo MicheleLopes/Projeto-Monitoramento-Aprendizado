@@ -28,15 +28,10 @@ A escola deseja um painel que deve ser atualizado semanalmente e o histórico de
 Hoje a Cademi disponibiliza uma API onde é possível ter acesso as informações necessárias para execução do projeto.
 Foi coletado via API duas estruturas de dados:
 
--Listar Alunos por Tag - Retorna uma lista de usuários à partir da ID de uma determinada TAG.
-Essa coleta permite ter acesso as turmas que precisamos realizar o acompanhamento do progresso semanal
-
--Listar Progresso por Aluno e Produto - Retorna o progresso de um usuário em um determinado curso.
-Essa coleta permiti extrair a informação de progresso necessária para o painel de acompanhamento do progresso
-
-Ao extrair a API os dados são entregues na seguinte estrutura:
-
 **Listar alunos por Tag:**
+
+Retorna uma lista de usuários à partir da ID de uma determinada TAG.
+Essa coleta permite ter acesso as turmas que precisamos realizar o acompanhamento do progresso semanal
 
 -Chamada da API: GET /usuario/lista_por_tag/{tag_id}
 
@@ -57,6 +52,9 @@ Resposta:
             
 **Listar Progresso por Aluno e Produto**
 
+Retorna o progresso de um usuário em um determinado curso.
+Essa coleta permiti extrair a informação de progresso necessária para o painel de acompanhamento do progresso
+
 -Chamada da API: GET /usuario/progresso_por_produto/{usuario_email_id_doc}/{produto_id}
 
 Resposta:
@@ -70,7 +68,7 @@ Resposta:
 # 3. Estratégia de solução
 
 # 4. Estrutura do ETL
-Para resolver o problema, foi necessário criar um ETL para empresa, modelando como funcionaria a extração dos dados, transformações necessárias e como funcionaria o armazenamento do banco de dados.
+Para resolver o problema, foi necessário criar um ETL para empresa, modelando como funcionaria a extração dos dados, transformações necessárias e o armazenamento do banco de dados.
 
 O fluxograma abaixo representa a estrutura final do nosso projeto, desde a extração dos dados até a interação com o usuário final.
 
