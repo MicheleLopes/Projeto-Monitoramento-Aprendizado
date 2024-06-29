@@ -53,7 +53,7 @@ Resposta:
 **Listar Progresso por Aluno e Produto**
 
 Retorna o progresso de um usuário em um determinado curso.
-Essa coleta permiti extrair a informação de progresso necessária para o painel de acompanhamento do progresso
+Essa coleta permite extrair a informação de progresso necessária para o painel de acompanhamento do progresso
 
 -Chamada da API: GET /usuario/progresso_por_produto/{usuario_email_id_doc}/{produto_id}
 
