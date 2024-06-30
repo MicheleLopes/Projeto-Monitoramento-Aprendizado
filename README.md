@@ -24,7 +24,7 @@ A escola deseja um painel que deve ser atualizado semanalmente e o histórico de
 
 
 # 2. Descrição dos dados
-Hoje a Cademi disponibiliza uma API onde é possível ter acesso as informações necessárias para execução do projeto.
+A plataforma Cademi disponibiliza uma API onde é possível ter acesso as informações necessárias para execução do projeto.
 Foi coletado via API duas estruturas de dados:
 
 **Listar alunos por Tag:**
@@ -104,7 +104,7 @@ Tempo de cada tutor  - Pegar insights e depoimento com os tutores
 Tempo de cada funcionário  - Pegar insights e depoimento com Meigarom e Nayara
 
 # 8. Conclusões finais
-O maior desafio deste projeto foi estruturar do zero como seria esse ETL da empresa e conseguir automatiza-lo de forma que atualizações futuras não dependam de um analista de dados, conseguem ser feitas por um usuário da área de negócio apenas por meio de uma interação com a interface
+O maior desafio deste projeto foi estruturar do zero como seria esse ETL da empresa e conseguir automatiza-lo de forma que atualizações futuras não dependam de um analista de dados, podem ser realizadas por um usuário da área de negócios por meio de uma interação com uma interface.
 
 # 9. Próximos passos
 
