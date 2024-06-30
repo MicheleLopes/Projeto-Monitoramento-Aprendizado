@@ -58,12 +58,12 @@ Essa coleta permite extrair a informação de progresso necessária para o paine
 
 Resposta:
 
-"progresso":
-{
+    "progresso":
+         {
             "total":"41.7%",
             "assistidas":7,
             "completas":5
-            }
+         }
 
 # 3. Estratégia de solução
 
