@@ -35,9 +35,8 @@ Essa coleta permite ter acesso as turmas que precisamos realizar o acompanhament
 -Chamada da API: GET /usuario/lista_por_tag/{tag_id}
 
 Resposta:
-```json
-{
-    "usuario": [
+
+    "usuario":
         {
             "id": 1051,
             "nome": "Joana C",
@@ -49,8 +48,7 @@ Resposta:
             "criado_em": "2020-01-12 19:59:20",
             "ultimo_acesso_em": null
         }
-    ]
-}
+
 **Listar Progresso por Aluno e Produto**
 
 Retorna o progresso de um usuário em um determinado curso.
@@ -59,16 +57,14 @@ Essa coleta permite extrair a informação de progresso necessária para o paine
 -Chamada da API: GET /usuario/progresso_por_produto/{usuario_email_id_doc}/{produto_id}
 
 Resposta:
-```json
-{
-"progresso":[
+
+"progresso":
 {
             "total":"41.7%",
             "assistidas":7,
             "completas":5
             }
-]
-}
+
 # 3. Estratégia de solução
 
 # 4. Estrutura do ETL
