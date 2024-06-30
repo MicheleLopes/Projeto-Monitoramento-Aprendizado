@@ -37,19 +37,20 @@ Essa coleta permite ter acesso as turmas que precisamos realizar o acompanhament
 Resposta:
 ```json
 {
-"usuario":[
-            {
-                "id":1051,
-                "nome":"Joana C",
-                "email":"teste@oculto.com.br",
-                "doc": "123.123.123-12",
-                "celular":null,
-                "login_auto":"http://membros.dvp/auth/login?crstk=",
-                "gratis": false,
-                "criado_em":"2020-01-12 19:59:20",
-                "ultimo_acesso_em":null
-            }
-        }    
+    "usuario": [
+        {
+            "id": 1051,
+            "nome": "Joana C",
+            "email": "teste@oculto.com.br",
+            "doc": "123.123.123-12",
+            "celular": null,
+            "login_auto": "http://membros.dvp/auth/login?crstk=",
+            "gratis": false,
+            "criado_em": "2020-01-12 19:59:20",
+            "ultimo_acesso_em": null
+        }
+    ]
+}
 **Listar Progresso por Aluno e Produto**
 
 Retorna o progresso de um usuário em um determinado curso.
@@ -60,11 +61,13 @@ Essa coleta permite extrair a informação de progresso necessária para o paine
 Resposta:
 ```json
 {
-"progresso":{
+"progresso":[
+{
             "total":"41.7%",
             "assistidas":7,
             "completas":5
             }
+]
 }
 # 3. Estratégia de solução
 
