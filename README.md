@@ -2,13 +2,13 @@
 Este foi um projeto realizado para a empresa [Comunidade DS](https://www.comunidadeds.com/), por meio de um vínculo por uma empresa Jr.
 Ele foi elaborado inicialmente por uma equipe de 3 cientistas de dados e em alguns momentos também houve o contato com stakeholders do projeto e o analista de dados da empresa para conseguir acesso aos dados e também conseguir executar o projeto na nuvem da empresa.
 
-O projeto possui duas entregas principais:
+Ele possui duas entregas principais:
 
 1- Construção do ETL que faz toda extração dos dados e carga para o GCP;
 
 2- Painel para interação com o usuário na plataforma Streamlit.
 
-Como o projeto contém alguns dados sigilosos da empresa, este portfólio contém toda estrutura do código original, com algumas alterações para não disponibilizar informações internas.
+Este portfólio contém toda estrutura do código original, com algumas alterações para não disponibilizar informações internas.
 
 O projeto do início ao fim, foi feito com uma colaboração entre os cientistas da dados Michele Lopes e Daniel Salvatori
 
