@@ -8,8 +8,7 @@ O projeto possui duas entregas principais:
 
 2- Painel para interação com o usuário na plataforma Streamlit.
 
-Como o projeto contém alguns dados sigilosos da empresa, o projeto deste portfólio utiliza uma tabela fictícia para poder disponibilizar o painel criado para visualização pública.
-Segue o link do painel: Ele possui acesso de segurança, você pode acessa-lo utilizando as credenciais usuário: e senha:
+Como o projeto contém alguns dados sigilosos da empresa, este portfólio contém toda estrutura do código original, com algumas alterações para não disponibilizar informações internas.
 
 O projeto do início ao fim, foi feito com uma colaboração entre os cientistas da dados Michele Lopes e Daniel Salvatori
 
@@ -36,7 +35,8 @@ Essa coleta permite ter acesso as turmas que precisamos realizar o acompanhament
 -Chamada da API: GET /usuario/lista_por_tag/{tag_id}
 
 Resposta:
-
+```json
+{
 "usuario":[
             {
                 "id":1051,
@@ -49,7 +49,7 @@ Resposta:
                 "criado_em":"2020-01-12 19:59:20",
                 "ultimo_acesso_em":null
             }
-            
+        }    
 **Listar Progresso por Aluno e Produto**
 
 Retorna o progresso de um usuário em um determinado curso.
@@ -58,13 +58,14 @@ Essa coleta permite extrair a informação de progresso necessária para o paine
 -Chamada da API: GET /usuario/progresso_por_produto/{usuario_email_id_doc}/{produto_id}
 
 Resposta:
-
+```json
+{
 "progresso":{
             "total":"41.7%",
             "assistidas":7,
             "completas":5
             }
-
+}
 # 3. Estratégia de solução
 
 # 4. Estrutura do ETL
@@ -118,9 +119,9 @@ Repositório que contém todos os arquivos necessários para a aplicação web d
 
 | Pasta/Nome do Arquivo          | Descrição                                                      |
 |--------------------------------|----------------------------------------------------------------|
-| .streamlit/config.toml         | Arquivo de configuração do Streamlit.                          |
-| auth/auth.py                   | Módulo de autenticação do usuário.                             |
-| configs/configs.py             | Arquivo de configuração geral do projeto.                      |
+| .streamlit/config.toml         | Arquivo de configuração do Layout do Streamlit.                          |
+| auth/auth.py                   | Módulo com as configurações de autenticação do usuário.                             |
+| configs/configs.py             | Arquivo com o Token e URL para chamada da API                |
 | functions/                     | Diretório contendo funções auxiliares.                         |
 | functions/bigquery_client.py   | Funções para interação com o BigQuery.                         |
 | functions/cademi_api.py        | Funções para interação com a API da Cademi.                    |
@@ -128,21 +129,30 @@ Repositório que contém todos os arquivos necessários para a aplicação web d
 | functions/streamlit_functions.py | Funções específicas para uso com o Streamlit.              |
 | img/                           | Diretório para armazenar imagens utilizadas no projeto.        |
 | pages/                         | Diretório contendo as páginas da aplicação Streamlit.          |
-| pages/Inserir_nova_tag.py      | Página para inserir novas tags na aplicação.                   |
-| pages/Progresso_analista.py    | Página para visualizar o progresso dos analistas.              |
-| pages/Progresso_cientista.py   | Página para visualizar o progresso dos cientistas.             |
+| pages/Inserir_nova_tag.py      | Página para inserir novas tags para coleta da API.                   |
+| pages/Progresso_analista.py    | Página para visualizar o progresso dos alunos da turma de analistas.              |
+| pages/Progresso_cientista.py   | Página para visualizar o progresso dos alunos da turma de cientistas.             |
 | .env                           | Arquivo de variáveis de ambiente.                              |
-| config.yaml                    | Arquivo de configuração em formato YAML.                       |
-| credenciais.json               | Arquivo contendo credenciais de acesso.                        |
+| config.yaml                    | Arquivo de configuração dos usuários e senha para autenticação                     |
+| credenciais.json               | Arquivo contendo credenciais de acesso ao GCP.                        |
 | Dockerfile                     | Arquivo de configuração para a criação de um container Docker. |
-| home.py                        | Script principal ou página inicial da aplicação.               |
+| home.py                        | Página inicial da aplicação do streamlit.               |
 | requirements.txt               | Arquivo contendo as dependências do projeto.                   |
-| style.css                      | Arquivo de estilos CSS para a aplicação.  
+| style.css                      | Arquivo de estilos CSS para a aplicação do streamlit.  
 
 
 **Repositório ETL** 
 
 Repositório que contém todos os arquivos necessários para funcionamento da estrutura do ETL
+
+| Pasta/Nome do Arquivo          | Descrição                                                      |
+|--------------------------------|----------------------------------------------------------------|
+| token/credenciais.json         | Arquivo contendo credenciais de acesso.                        |
+| .env                           | Arquivo de variáveis de ambiente.                              |
+| configs.py                     | Arquivo com o Token e URL para chamada da API                         |
+| create_dataframe.py            | Script com funções para extraçao, transforção e criação do dataframe de progresso dos alunos|
+| etl_progresso_alunos.py        | Script para chamada das funções do create_dataframe, interface para rodar os comandos do ETL. |
+| requirements.txt               | Arquivo contendo as dependências do projeto. |
 
 
 # 2. Documentaçao e referência para consultas
