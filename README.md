@@ -118,26 +118,25 @@ Repositório que contém todos os arquivos necessários para a aplicação web d
 
 | Pasta/Nome do Arquivo          | Descrição                                                      |
 |--------------------------------|----------------------------------------------------------------|
-| .streamlit/config.toml         | Arquivo de configuração do Layout do Streamlit.                          |
-| auth/auth.py                   | Módulo com as configurações de autenticação do usuário.                             |
-| configs/configs.py             | Arquivo com o Token e URL para chamada da API                |
+| .streamlit/config.toml         | Arquivo de configuração do Layout do Streamlit.                |
+| auth/auth.py                   | Módulo com as configurações de autenticação do usuário.        |
 | functions/                     | Diretório contendo funções auxiliares.                         |
 | functions/bigquery_client.py   | Funções para interação com o BigQuery.                         |
 | functions/cademi_api.py        | Funções para interação com a API da Cademi.                    |
 | functions/data_processing.py   | Funções para processamento de dados.                           |
-| functions/streamlit_functions.py | Funções específicas para uso com o Streamlit.              |
+| functions/streamlit_functions.py | Funções específicas para uso com o Streamlit.                |
 | img/                           | Diretório para armazenar imagens utilizadas no projeto.        |
 | pages/                         | Diretório contendo as páginas da aplicação Streamlit.          |
-| pages/Inserir_nova_tag.py      | Página para inserir novas tags para coleta da API.                   |
-| pages/Progresso_analista.py    | Página para visualizar o progresso dos alunos da turma de analistas.              |
-| pages/Progresso_cientista.py   | Página para visualizar o progresso dos alunos da turma de cientistas.             |
+| pages/Inserir_nova_tag.py      | Página para inserir novas tags para coleta da API.              |
+| pages/Progresso_analista.py    | Página para visualizar o progresso dos alunos da turma de analistas.  |
+| pages/Progresso_cientista.py   | Página para visualizar o progresso dos alunos da turma de cientistas. |
 | .env                           | Arquivo de variáveis de ambiente.                              |
-| config.yaml                    | Arquivo de configuração dos usuários e senha para autenticação                     |
+| config.yaml                    | Arquivo de configuração dos usuários e senha para autenticação        |
 | credenciais.json               | Arquivo contendo credenciais de acesso ao GCP.                        |
 | Dockerfile                     | Arquivo de configuração para a criação de um container Docker. |
-| home.py                        | Página inicial da aplicação do streamlit.               |
+| home.py                        | Página inicial da aplicação do streamlit.                      |
 | requirements.txt               | Arquivo contendo as dependências do projeto.                   |
-| style.css                      | Arquivo de estilos CSS para a aplicação do streamlit.  
+| style.css                      | Arquivo de estilos CSS para a aplicação do streamlit.          |
 
 
 **Repositório ETL** 
@@ -148,7 +147,6 @@ Repositório que contém todos os arquivos necessários para funcionamento da es
 |--------------------------------|----------------------------------------------------------------|
 | token/credenciais.json         | Arquivo contendo credenciais de acesso.                        |
 | .env                           | Arquivo de variáveis de ambiente.                              |
-| configs.py                     | Arquivo com o Token e URL para chamada da API                         |
 | create_dataframe.py            | Script com funções para extraçao, transforção e criação do dataframe de progresso dos alunos|
 | etl_progresso_alunos.py        | Script para chamada das funções do create_dataframe, interface para rodar os comandos do ETL. |
 | requirements.txt               | Arquivo contendo as dependências do projeto. |
