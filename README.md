@@ -92,8 +92,9 @@ O APP do streamlit é disponível para acesso de forma web, hospedado em Cloud p
 Falar sobre a divisão modular para organização, faltar também da separação das variáveis de ambiente e credenciais
 
 # 6. Solução final
-Explicar sobre o streamlit e suas páginas
+
 Como produto final para empresa foi elaborado um painel na plataforma do streamlit.
+
 Esse painel possui inicialmente uma tela de login, que garante o acesso apenas para os colaboradores internos da empresa.
 (Gif tela de login)
 
