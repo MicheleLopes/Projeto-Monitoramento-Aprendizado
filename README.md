@@ -91,9 +91,9 @@ O APP do streamlit é disponível para acesso de forma web, hospedado em Cloud p
 
 Falar sobre a divisão modular para organização, faltar também da separação das variáveis de ambiente e credenciais
 
-# 6. Solução final
+# 6. Panei do streamlit
 
-Como produto final para empresa foi elaborado um painel na plataforma do streamlit.
+Como produto final para a empresa ter acesso a visualização dos dados e realizar as consultas necessárias, foi elaborado um painel na plataforma do streamlit.
 
 Esse painel possui inicialmente uma tela de login, que garante o acesso apenas para os colaboradores internos da empresa.
 
