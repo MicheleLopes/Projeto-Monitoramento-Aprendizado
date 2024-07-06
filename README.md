@@ -96,6 +96,7 @@ Falar sobre a divisão modular para organização, faltar também da separação
 Como produto final para empresa foi elaborado um painel na plataforma do streamlit.
 
 Esse painel possui inicialmente uma tela de login, que garante o acesso apenas para os colaboradores internos da empresa.
+
 (Gif tela de login)
 
 Além disso possui uma página para inserir novas turmas para entrarem na automação de coleta de progresso. A página é integrada com a tabela de tags de turmas dentro do banco de dados no GCP. O responsável pode informar a nova tag, a qual trilha e turma ela pertence e subir na automação. O código dessa página possui uma série da validações para identificar se os dados inseridos estão corretos, antes de subir a informação da nova tag para a tabela, ele verifica:
@@ -103,7 +104,9 @@ Além disso possui uma página para inserir novas turmas para entrarem na automa
 2. Se as informações preenchidas no campo são números inteiros;
 3. Se o número de Tag informado de fato existe na Cademi (faz uma consulta via API na cademi para confirmar essa informação);
 4. Se a Tag e turma informada são realmente dados novos, ou seja não existem ainda dentro da tabela de tags.
-Após essa validações o sistema permite a inserção da Tag e retorna uma mensagem positiva
+   
+Após essas validações o sistema permite a inserção da Tag e retorna uma mensagem positiva
+
 (Gif tela de login)
 
 (gif mostrando a página com a visualização das tabelas, primeiro a visualização por turma)
