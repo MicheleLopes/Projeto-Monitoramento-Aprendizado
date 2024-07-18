@@ -1,40 +1,55 @@
-# Projeto-Monitoramento-Aprendizado
-Este foi um projeto realizado para a empresa [Comunidade DS](https://www.comunidadeds.com/), por meio de um vínculo por uma empresa Jr.
-Ele foi elaborado inicialmente por uma equipe de 3 cientistas de dados e em alguns momentos também houve o contato com stakeholders do projeto e o analista de dados da empresa para conseguir acesso aos dados e também conseguir executar o projeto na nuvem da empresa.
+# Projeto Monitoramento de Aprendizado
+
+
+Este projeto foi desenvolvido para a empresa Comunidade DS, através de um vínculo por uma empresa Jr.
 
 Ele possui duas entregas principais:
 
-1- Construção do ETL que faz toda extração dos dados e carga para o GCP;
+- <u>**ETL :**</u> Responsável pela extração dos dados da plataforma de ensino, manipulação e carga em tabelas dentro do GCP (Google Cloud Platform)
 
-2- Painel para interação com o usuário na plataforma Streamlit.
+- <u>**Dashboard :**</u> Painel para interação com o usuário utilizando a plataforma Streamlit, onde será possivel o acompanhamento do progresso dos alunos.
 
-Este portfólio contém toda estrutura do código original, com algumas alterações para não disponibilizar informações internas.
+O projeto foi feito desenvolvido em colaboração entre os cientistas da dados [Daniel Salvatori](https://github.com/Daniel-Salvatori) e [Michele Lopes](https://github.com/MicheleLopes). 
 
-O projeto do início ao fim, foi feito com uma colaboração entre os cientistas da dados Michele Lopes e Daniel Salvatori
+Aqui você pode encontrar toda estrutura do código original, com algumas alterações devido a presença de dados sensíveis.
+
 
 # 1. Problema de Negócio
 
-A escola Comunidade DS utiliza a plataforma da [Cademi](https://cademi.com.br/), para disponibilizar os cursos para os alunos. 
-Hoje o coordenador de ensino não consegue visualizar o progresso dos alunos ao longo das disciplinas, ainda existem tutores que acompanham o progresso dos alunos novos, para garantir engajamento e evitar cancelamentos de assinatura, mas isso ocorre de forma manual, consultando um por um o progresso dentro da plataforma.
+A [Comunidade DS](https://www.comunidadeds.com/) é uma empresa de educação cujo objetivo é a capacitação de pessoas para o mercado de trabalho na área de dados. Por meio de uma assinatura o aluno tem acesso a todo conteúdo gravado de acordo com a produto contratado. Esse conteúdo é disponibilizado para os alunos através da plataforma da [Cademi](https://cademi.com.br/).
 
-Desta forma a principal a principal dor é poder visualizar o progresso dos alunos em uma frequência semanal, para facilitar a agilidade da equipe de tutores que garante o engajamento e gerar Insights para as reuniões de acompanhamento de métricas.
-Os alunos são dividido em turmas, onde todo mês abre uma turma nova para acompanhamento e existem alguns parâmetros de avanço esperado, o que serve como guia para o tutor entender se o aluno está com o progresso previsto. Além da entrada de alunos novos mensalmente, que precisam ser inclusos nesse acompanhamento, eventualmente os alunos trocam de turma, ou acabam desistindo do curso e essas turmas precisam ser atualizadas.
+Após alguns anos inserida no mercado, a empresa decidiu reformular sua estrutura de ensino. Os alunos, que anteriormente estudavam de forma autônoma, foram organizados em turmas, cada uma sob a responsabilidade de um tutor. Estes tutores são encarregados de acompanhar o progresso dos alunos nas disciplinas, identificar dificuldades e manter uma relação próxima com a instituição, a fim de prevenir possíveis cancelamentos de assinaturas.
+ 
+Diante dessa mudança, o acompanhamento do progresso dos alunos tornou-se fundamental para avaliar o avanço na trilha de aprendizado. A plataforma de ensino (Cademi) dispçõe de uma ferramenta em seu site que permite consultar essas informações por meio do e-mail do aluno. No entanto, esse processo é manual, exigindo que o tutor acesse os dados de cada aluno individualmente, o que se mostrou inviável devido à morosidade na coleta das informações.
 
-A escola deseja um painel que deve ser atualizado semanalmente e o histórico deve ser mantido, mostrando o progresso dos alunos. No final do mês deseja-se poder analisar o histórico e entender como é o progresso dos alunos.
+O obetivo desse projeto é extrair os dados da plataforma e unificá-los em 2 tabelas (uma para cada trilha de formação), a partir daí desenvolver uma painel em que os tutores poderão acompanhar o progresso dos alunos ao longo das semanas. Esses dados deverão ser atualizados semanalmente onde será possivel visualizar a jornada de cada aluno ao longo das disciplinas, ele servirá como um guia para o tutor identificar se o aluno esta atingindo o progresso previsto e entender possíveis situações que podem estar afetando seu rendimento. O painel deve estar disponível através de um link que poderá ser acessado pelos colaboradores da empresa por meio de um usuário e senha afim de garantir a integridade das informações.
 
 
-# 2. Descrição dos dados
+# 2. Planejamento da Solução
+
+Para planejamento da solução utilizamos o método **SAPE** (acrônimo de Sáida, Processo, Entrada), que servirá como um guia para execução do projeto.
+
+<u>**Saída:**</u> Entrega de um painel de visualização em streamlit para acompanhamento do progresso dos alunos ao longo das disciplinas.
+
+<u>**Processo:**</u> Extrair os dados da plataforma de ensino, armazená-los e criar um painel para visualização desses dados.
+
+<u>**Entrada:**</u> Os dados são disponibilizados via API pela plataforma de ensino. Será criado um ETL cuja função é coletar e armazená-los em tabelas dentro do BigQuery Google Cloud. Com os dados coletados e armazenados será entregue um painel de visualização para acompanhamento do progresso dos alunos.
+
+
+# 3. Descrição dos dados
 A plataforma Cademi disponibiliza uma API onde é possível ter acesso as informações necessárias para execução do projeto.
-Foi coletado via API duas estruturas de dados:
+Foram utilizados 2 endpoints para acesso aos dados:
 
-**Listar alunos por Tag:**
+### **Listar alunos por Tag:**
 
-Retorna uma lista de usuários à partir da ID de uma determinada TAG.
-Essa coleta permite ter acesso as turmas que precisamos realizar o acompanhamento do progresso semanal
+Retorna uma lista de usuários associados a uma tag específica. Essa coleta permite ter acesso as turmas que precisamos realizar o acompanhamento do progresso semanal.
 
--Chamada da API: GET /usuario/lista_por_tag/{tag_id}
+**Método:** <mark>`GET`</mark>
 
-Resposta:
+**URL:** `/usuario/lista_por_tag/{tag_id}`
+
+
+**Resposta:**
 
     "usuario":
         {
@@ -49,12 +64,14 @@ Resposta:
             "ultimo_acesso_em": null
         }
 
-**Listar Progresso por Aluno e Produto**
+### **Listar Progresso por Aluno e Produto**
 
-Retorna o progresso de um usuário em um determinado curso.
-Essa coleta permite extrair a informação de progresso necessária para o painel de acompanhamento do progresso
+Retorna o progresso de um usuário em um determinado curso. Essa coleta permite extrair a informação de progresso necessária para o painel de acompanhamento do progresso
 
--Chamada da API: GET /usuario/progresso_por_produto/{usuario_email_id_doc}/{produto_id}
+**Método:** <mark>`GET`</mark>
+
+**URL:** `/usuario/progresso_por_produto/{usuario_email_id_doc}/{produto_id}`
+
 
 Resposta:
 
@@ -65,41 +82,37 @@ Resposta:
             "completas":5
          }
 
-# 3. Estratégia de solução
-
 # 4. Estrutura do ETL
-Para resolver o problema, foi necessário criar um ETL para empresa, modelando como funcionaria a extração dos dados, transformações necessárias e o armazenamento do banco de dados.
 
-O fluxograma abaixo representa a estrutura final do nosso projeto, desde a extração dos dados até a interação com o usuário final.
+O ETL será responsável pela extração dos dados da plataforma Cademi, onde serão serão tratados e posteriormente armazenados dentro de tabelas no BigQuery Google Cloud.
+
+O fluxograma abaixo representa a estrutura final do projeto, desde a extração dos dados até a interação com o usuário final.
 
 <img width="739" alt="image" src="https://github.com/MicheleLopes/Projeto-Monitoramento-Aprendizado/assets/123608349/3d6a0eb3-f9f3-4c96-86f7-360eaffab5f1">
 
 Segue abaixo um descritivo de como funcionam as interações do ETL:
 
-Inicialmente é feito a extração dos dados da plataforma da Cademi por meio de uma API. Para isso como entrada é necessário informar tags das turmas, onde a API irá retornar uma lista de alunos e informações de contato.
+ - Inicialmente é feito a extração dos dados da plataforma da Cademi por meio de uma API. Para isso como entrada é necessário informar tags das turmas, onde a API irá retornar uma lista de alunos e informações de contato.
 
-Com essa informação é realizado uma segunda solicitação via API, onde como entrada é fornecido a lista de alunos que a Cademi retornou e em conjunto uma tabela com os produtos que gostaríamos de extrair o progresso.
-Esses dados do progresso são armazenados dentro do nosso banco de dados a fim de armazenar o histórico do progresso.
+ - Com essa informação é realizado uma segunda solicitação via API, onde como entrada é fornecido a lista de alunos que a Cademi retornou e em conjunto uma tabela com os produtos que gostaríamos de extrair o progresso. Esses dados do progresso são armazenados dentro do nosso banco de dados a fim de armazenar o histórico do progresso.
 
-Para interação com o usuário, foi criado um dashboard no streamlit, que consulta o banco de dados do GCP e trás uma visualização dos dados de progresso de uma forma interativa com filtros.
+ - Para interação com o usuário, foi criado um dashboard no streamlit, que consulta o banco de dados do GCP e retorna uma visualização dos dados de progresso de uma forma interativa de acordo com os filtros selecionados. Além disso o streamlit também possui uma tela onde o coordenador de ensino poderá inserir novas tags para entrarem nas próximas coletas de turmas da API. Essa implementação valida se a tag existe dentro da plataforma de ensino e insere na tabela para as proximas coletas. Isso traz autonomia para os usuários sem a necessidade de alterações no codigo.
 
-Além disso o streamlit também possui uma tela onde o coordenador de ensino pode inserir novas tags para entrarem nas próximas coletas de turmas da API. Para isso funcionar sem a necessidade de alterações internas, o próprio streamlit consegue alimentar a tabela de lista de turmas dentro do GCP.
-
-O APP do streamlit é disponível para acesso de forma web, hospedado em Cloud por meio do GCP. Como essa aplicação é de uso interno da empresa, para acesso seguro, existe uma tela de login onde os usuários precisam informar as credenciais fornecidas pela empresa.
+ - O APP do streamlit é disponível para acesso de forma web e poderá ser acessado através de credenciais fornecidas pela empresa.
 
 # 5. Estrutura do código
 
 Falar sobre a divisão modular para organização, faltar também da separação das variáveis de ambiente e credenciais
 
-# 6. Panei do streamlit
+# 6. Painel do streamlit
 
-Como produto final para a empresa ter acesso a visualização dos dados e realizar as consultas necessárias, foi elaborado um painel na plataforma do streamlit.
+Como produto final foi elaborado um painel na plataforma do streamlit, com isso a empresa poderá ter acesso a visualização dos dados e realizar as consultas necessárias.
 
 Esse painel possui inicialmente uma tela de login, que garante o acesso apenas para os colaboradores internos da empresa.
 
 (Gif tela de login)
 
-Além disso possui uma página para inserir novas turmas para entrarem na automação de coleta de progresso. A página é integrada com a tabela de tags de turmas dentro do banco de dados no GCP. O responsável pode informar a nova tag, a qual trilha e turma ela pertence e subir na automação. O código dessa página possui uma série da validações para identificar se os dados inseridos estão corretos, antes de subir a informação da nova tag para a tabela, ele verifica:
+Além disso possui uma página para inserir novas turmas para entrarem na automação de coleta de progresso. A página é integrada com a tabela de tags de turmas dentro do banco de dados no BigQuery Google Cloud. O responsável pode informar a nova tag, a qual trilha e turma ela pertence e subir na automação. O código dessa página possui uma série da validações para identificar se os dados inseridos estão corretos, antes de subir a informação da nova tag para a tabela, ele verifica:
 1. Se ambos os campos estão preenchidos;
 2. Se as informações preenchidas no campo são números inteiros;
 3. Se o número de Tag informado de fato existe na Cademi (faz uma consulta via API na cademi para confirmar essa informação);
@@ -117,22 +130,42 @@ Após essas validações o sistema permite a inserção da Tag e retorna uma men
 
 # 7. Resultados obtidos
 Processo rodando de forma automática e independente de um profissional que entenda de código para subir eventuais atualizações
+
 Se a pessoa cancelar deixa de pagar o ticket médio - entender valores se possíveis 
+
 Tempo de cada tutor  - Pegar insights e depoimento com os tutores
+
 Tempo de cada funcionário  - Pegar insights e depoimento com Meigarom e Nayara
 
 # 8. Conclusões finais
-O maior desafio deste projeto foi estruturar do zero como seria esse ETL da empresa e conseguir automatiza-lo de forma que atualizações futuras não dependam de um analista de dados, podem ser realizadas por um usuário da área de negócios por meio de uma interação com uma interface.
+O maior desafio deste projeto foi estruturar do zero como seria esse ETL da empresa e conseguir automatiza-lo de forma que atualizações futuras não dependam de um analista de dados, podendo ser realizadas por um usuário da área de negócios por meio de uma interação com uma interface.
+
+Com os dados e históricos coletados a empresa pode obter diversos insights valiosos para tomada de decisão tanto no âmbito estratégico como operacional, tais como:
+
+- <u>**Identificação de padrões de desempenho:**</u> Analisando o desempenho dos alunos é possível identificar comportamentos que precedem o abandono, permitindo intervenções preventivas mais eficazes;
+
+- <u>**Avaliação e Melhoria dos Tutores:**</u> Analisar o impacto dos tutores no progresso dos alunos pode ajudar a identificar práticas eficazes e áreas que necessitam de melhoria;
+
+- <u>**Planejamento Estratégico:**</u> Compreender quais disciplinas ou módulos apresentam maiores dificuldades pode orientar a revisão do currículo e o desenvolvimento de novos materiais;
+
+- <u>**Eficiência Operacional:**</u> Reduzir a carga administrativa dos tutores e da equipe de suporte, permitindo que foquem mais no acompanhamento pedagógico e menos em tarefas manuais;
+
+- <u>**Previsão de Tendências:**</u> Utilizar dados históricos para prever tendências futuras.
+
 
 # 9. Próximos passos
+
+- Testar novas ferramentas de visualização mais robustas (Power BI, Tableau, Looker);
+- Desenvolver novos KPIs e Métricas de Sucesso.
+- Segmentação de alunos em diferentes perfis para oferecer suporte personalizado
+
+---
 
 # Sobre o repositório
 
 # 1. Estrutura das pastas
 
-**Repositório APP** 
-
-Repositório que contém todos os arquivos necessários para a aplicação web do Streamlit
+<u>**Repositório APP:**</u> contém todos os arquivos necessários para a aplicação web do Streamlit
 
 | Pasta/Nome do Arquivo          | Descrição                                                      |
 |--------------------------------|----------------------------------------------------------------|
@@ -157,9 +190,7 @@ Repositório que contém todos os arquivos necessários para a aplicação web d
 | style.css                      | Arquivo de estilos CSS para a aplicação do streamlit.          |
 
 
-**Repositório ETL** 
-
-Repositório que contém todos os arquivos necessários para funcionamento da estrutura do ETL
+<u>**Repositório ETL:**</u> contém todos os arquivos necessários para funcionamento da estrutura do ETL
 
 | Pasta/Nome do Arquivo          | Descrição                                                      |
 |--------------------------------|----------------------------------------------------------------|
