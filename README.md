@@ -20,7 +20,7 @@ A [Comunidade DS](https://www.comunidadeds.com/) é uma empresa de educação cu
 
 Após alguns anos inserida no mercado, a empresa decidiu reformular sua estrutura de ensino. Os alunos, que anteriormente estudavam de forma autônoma, foram organizados em turmas, cada uma sob a responsabilidade de um tutor. Estes tutores são encarregados de acompanhar o progresso dos alunos nas disciplinas, identificar dificuldades e manter uma relação próxima com a instituição, a fim de prevenir possíveis cancelamentos de assinaturas.
  
-Diante dessa mudança, o acompanhamento do progresso dos alunos tornou-se fundamental para avaliar o avanço na trilha de aprendizado. A plataforma de ensino (Cademi) dispçõe de uma ferramenta em seu site que permite consultar essas informações por meio do e-mail do aluno. No entanto, esse processo é manual, exigindo que o tutor acesse os dados de cada aluno individualmente, o que se mostrou inviável devido à morosidade na coleta das informações.
+Diante dessa mudança, o acompanhamento do progresso dos alunos tornou-se fundamental para avaliar o avanço na trilha de aprendizado. A plataforma de ensino (Cademi) dispõe de uma ferramenta em seu site que permite consultar essas informações por meio do e-mail do aluno. No entanto, esse processo é manual, exigindo que o tutor acesse os dados de cada aluno individualmente, o que se mostrou inviável devido à morosidade na coleta das informações.
 
 O obetivo desse projeto é extrair os dados da plataforma e unificá-los em 2 tabelas (uma para cada trilha de formação), a partir daí desenvolver uma painel em que os tutores poderão acompanhar o progresso dos alunos ao longo das semanas. Esses dados deverão ser atualizados semanalmente onde será possivel visualizar a jornada de cada aluno ao longo das disciplinas, ele servirá como um guia para o tutor identificar se o aluno esta atingindo o progresso previsto e entender possíveis situações que podem estar afetando seu rendimento. O painel deve estar disponível através de um link que poderá ser acessado pelos colaboradores da empresa por meio de um usuário e senha afim de garantir a integridade das informações.
 
@@ -100,35 +100,57 @@ Segue abaixo um descritivo de como funcionam as interações do ETL:
 
  - O APP do streamlit é disponível para acesso de forma web e poderá ser acessado através de credenciais fornecidas pela empresa.
 
-# 5. Estrutura do código
-
-Falar sobre a divisão modular para organização, faltar também da separação das variáveis de ambiente e credenciais
-
-# 6. Painel do streamlit
+# 5. Painel do streamlit
 
 Como produto final foi elaborado um painel na plataforma do streamlit, com isso a empresa poderá ter acesso a visualização dos dados e realizar as consultas necessárias.
 
-Esse painel possui inicialmente uma tela de login, que garante o acesso apenas para os colaboradores internos da empresa.
+### <u>Login</u>
+O painel é composto inicialmente pela tela de login, que garante o acesso apenas para os colaboradores internos da empresa.
 
-(Gif tela de login)
+![login](img/login.gif)
 
-Além disso possui uma página para inserir novas turmas para entrarem na automação de coleta de progresso. A página é integrada com a tabela de tags de turmas dentro do banco de dados no BigQuery Google Cloud. O responsável pode informar a nova tag, a qual trilha e turma ela pertence e subir na automação. O código dessa página possui uma série da validações para identificar se os dados inseridos estão corretos, antes de subir a informação da nova tag para a tabela, ele verifica:
+Após o login o usuário terá a opção de navegar por 4 páginas
+
+### <u>Inserir nova TAG</u>
+
+Nessa página será possível inserir novas turmas para entrarem na automação de coleta de progresso. Ela é integrada com a tabela de tags de turmas dentro do banco de dados no BigQuery Google Cloud. O responsável pode informar a nova tag, a qual trilha e turma ela pertence e subir na automação. A estrutura do código possui uma série da validações para identificar se os dados inseridos estão corretos, antes de subir a informação da nova tag para a tabela, ele verifica:
+
 1. Se ambos os campos estão preenchidos;
+
 2. Se as informações preenchidas no campo são números inteiros;
+
 3. Se o número de Tag informado de fato existe na Cademi (faz uma consulta via API na cademi para confirmar essa informação);
+
 4. Se a Tag e turma informada são realmente dados novos, ou seja não existem ainda dentro da tabela de tags.
    
 Após essas validações o sistema permite a inserção da Tag e retorna uma mensagem positiva
 
-(Gif tela de login)
+![inserir_nova_tag](img/inserir_nova_tag.gif)
 
-(gif mostrando a página com a visualização das tabelas, primeiro a visualização por turma)
+### <u>Progresso dos alunos e turmas</u>
 
-(gif mostrando a visualização geral, explicação dos indicadores)
+Ao acessar a página de progresso, o usuário irá encontrar no topo 3 indicadores gerais:
 
-(gif mostrando os filtros)
+- **Total de alunos:** Total de alunos cadastrados na trilha
+- **Total de turmas:** Total de turmas cadastradas na trilha
+- **Média de Progresso:** Porcentagem média do progresso de todos os alunos
 
-# 7. Resultados obtidos
+O usuário poderá escolher a forma de visualizar os dados:
+
+- **Geral:** Visão geral do progresso dos alunos ao longo das semanas.
+- **Por turma:** Visão geral do progresso das turmas ao longo das semanas.
+
+
+Na barra lateral o mesmo terá a opção de filtrar os dados de 3 maneiras:
+
+- **Por semana**
+- **Por turma**
+- **Por curso**
+
+![navegacao](img/navegacao.gif)
+
+
+# 6. Resultados obtidos
 Processo rodando de forma automática e independente de um profissional que entenda de código para subir eventuais atualizações
 
 Se a pessoa cancelar deixa de pagar o ticket médio - entender valores se possíveis 
@@ -137,7 +159,7 @@ Tempo de cada tutor  - Pegar insights e depoimento com os tutores
 
 Tempo de cada funcionário  - Pegar insights e depoimento com Meigarom e Nayara
 
-# 8. Conclusões finais
+# 7. Conclusões finais
 O maior desafio deste projeto foi estruturar do zero como seria esse ETL da empresa e conseguir automatiza-lo de forma que atualizações futuras não dependam de um analista de dados, podendo ser realizadas por um usuário da área de negócios por meio de uma interação com uma interface.
 
 Com os dados e históricos coletados a empresa pode obter diversos insights valiosos para tomada de decisão tanto no âmbito estratégico como operacional, tais como:
@@ -153,7 +175,7 @@ Com os dados e históricos coletados a empresa pode obter diversos insights vali
 - <u>**Previsão de Tendências:**</u> Utilizar dados históricos para prever tendências futuras.
 
 
-# 9. Próximos passos
+# 8. Próximos passos
 
 - Testar novas ferramentas de visualização mais robustas (Power BI, Tableau, Looker);
 - Desenvolver novos KPIs e Métricas de Sucesso.
