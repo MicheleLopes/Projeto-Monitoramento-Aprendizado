@@ -22,7 +22,7 @@ Após alguns anos inserida no mercado, a empresa decidiu reformular sua estrutur
  
 Diante dessa mudança, o acompanhamento do progresso dos alunos tornou-se fundamental para avaliar o avanço na trilha de aprendizado. A plataforma de ensino (Cademi) dispõe de uma ferramenta em seu site que permite consultar essas informações por meio do e-mail do aluno. No entanto, esse processo é manual, exigindo que o tutor acesse os dados de cada aluno individualmente, o que se mostrou inviável devido à morosidade na coleta das informações.
 
-O obetivo desse projeto é extrair os dados da plataforma e unificá-los em 2 tabelas (uma para cada trilha de formação), a partir daí desenvolver uma painel em que os tutores poderão acompanhar o progresso dos alunos ao longo das semanas. Esses dados deverão ser atualizados semanalmente onde será possivel visualizar a jornada de cada aluno ao longo das disciplinas, ele servirá como um guia para o tutor identificar se o aluno esta atingindo o progresso previsto e entender possíveis situações que podem estar afetando seu rendimento. O painel deve estar disponível através de um link que poderá ser acessado pelos colaboradores da empresa por meio de um usuário e senha afim de garantir a integridade das informações.
+O objetivo desse projeto é extrair os dados da plataforma e unificá-los em 2 tabelas (uma para cada trilha de formação), a partir daí desenvolver uma painel em que os tutores poderão acompanhar o progresso dos alunos ao longo das semanas. Esses dados deverão ser atualizados semanalmente onde será possivel visualizar a jornada de cada aluno ao longo das disciplinas, ele servirá como um guia para o tutor identificar se o aluno esta atingindo o progresso previsto e entender possíveis situações que podem estar afetando seu rendimento. O painel deve estar disponível através de um link que poderá ser acessado pelos colaboradores da empresa por meio de um usuário e senha afim de garantir a integridade das informações.
 
 
 # 2. Planejamento da Solução
@@ -151,13 +151,15 @@ Na barra lateral o mesmo terá a opção de filtrar os dados de 3 maneiras:
 
 
 # 6. Resultados obtidos
-Processo rodando de forma automática e independente de um profissional que entenda de código para subir eventuais atualizações
+O Processo hoje, roda de forma automática e não dependente de um profissional que entenda de código para subir eventuais atualizações, da forma que o banco de dados está estrutura as atualizações dos alunos pertencentes de cada turma acontecem de forma automática ou são inseridas direto pelo formulário do painel streamlit. Além disso foi coletado um feedback dos usuários da solução final (tutores, analista de dados e coordenadora de ensino) e foi possível mensurar alguns dos principais ganhos:
 
-Se a pessoa cancelar deixa de pagar o ticket médio - entender valores se possíveis 
+**Tempo de coleta:** Para analisar as turmas em acompanhamento cada tutor gastava umas 2hrs a 4hrs, a depender do tamanho da turma, para coletar por acesso o percentual de progresso do aluno. Hoje é possível simplesmente filtrar a turma, semana do ano e a disciplina para avaliar o progresso (reduzindo esse tempo para menos de 1 minuto). Vale ressultar que a cada mês entram novas turmas, o que tornaria esse acompanhamento manual inviável no médio prazo.
 
-Tempo de cada tutor  - Pegar insights e depoimento com os tutores
+**Tempo de análise por turma:** Após coleta, o tutor ainda tinha que montar ao menos 3 grupos de alunos para acionamento assertivo. Exemplo: Parabenizar os que estavam dentro do esperado e também entender porque determinados alunos ainda não tinham atingido o desempenho esperado. Hoje basta ordenar o filtro e visualmente é possível analisar os avanços semanais por aluno. Redução de mais umas 2 horas.
 
-Tempo de cada funcionário  - Pegar insights e depoimento com Meigarom e Nayara
+**Qualidade da coleta:** Anteriormente o progresso era anotado manualmente, então não era possível avaliar a média de avanço do aluno. Isso é importante pra entender um pouco do perfil do aluno, se é um aluno que estuda constantemente ou se deixa para última semana. Com o dash, o registro funciona como uma foto semanal e que não será alterado por falha humana.
+
+**Rapidez na análise geral das turmas:** Hoje é possível extrair um arquivo excel contendo as turmas, disciplinas e semanas. Permitindo realizar um tabelão para análise. Anteriormente, pode-se estimar que perderiam umas 3 semanas para montar a grande tabela geral. Apesar de montada não teria o progresso semanal fidedigno ao final do trabalho, pois não teria um marco temporal de corte.
 
 # 7. Conclusões finais
 O maior desafio deste projeto foi estruturar do zero como seria esse ETL da empresa e conseguir automatiza-lo de forma que atualizações futuras não dependam de um analista de dados, podendo ser realizadas por um usuário da área de negócios por meio de uma interação com uma interface.
