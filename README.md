@@ -151,7 +151,7 @@ Na barra lateral o mesmo terá a opção de filtrar os dados de 3 maneiras:
 
 
 # 6. Resultados obtidos
-O Processo hoje, roda de forma automática e não dependente de um profissional que entenda de código para subir eventuais atualizações, da forma que o banco de dados está estrutura as atualizações dos alunos pertencentes de cada turma acontecem de forma automática ou são inseridas direto pelo formulário do painel streamlit. Além disso foi coletado um feedback dos usuários da solução final (tutores, analista de dados e coordenadora de ensino) e foi possível mensurar alguns dos principais ganhos:
+O Processo hoje, roda de forma automática e não dependente de um profissional que entenda de código para subir eventuais atualizações, o banco de dados está estruturado de forma que as atualizações dos alunos pertencentes de cada turma acontecem de automaticamente ou são inseridas direto pelo formulário do painel streamlit. Além disso foi coletado um feedback dos usuários da solução final (tutores, analista de dados e coordenadora de ensino) e foi possível mensurar alguns dos principais ganhos:
 
 **Tempo de coleta:** Para analisar as turmas em acompanhamento cada tutor gastava umas 2hrs a 4hrs, a depender do tamanho da turma, para coletar por acesso o percentual de progresso do aluno. Hoje é possível simplesmente filtrar a turma, semana do ano e a disciplina para avaliar o progresso (reduzindo esse tempo para menos de 1 minuto). Vale ressultar que a cada mês entram novas turmas, o que tornaria esse acompanhamento manual inviável no médio prazo.
 
